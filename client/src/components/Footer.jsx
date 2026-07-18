@@ -1,15 +1,13 @@
+import "./Footer.css";
+
 const Footer = () => {
   return (
-    <footer
-      style={{
-        background: "#1f2937",
-        color: "white",
-        textAlign: "center",
-        padding: "20px",
-      }}
-    >
-      <h3>Cloud9 Ecommerce</h3>
-      <p>© 2026 All Rights Reserved</p>
+    <footer className="footer">
+      <h2>Cloud9 Ecommerce</h2>
+
+      <p>Premium Shopping Experience</p>
+
+      <p>© 2026 Cloud9. All Rights Reserved.</p>
     </footer>
   );
 };

@@ -1,54 +1,42 @@
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <nav
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        background: "#1f2937",
-        color: "white",
-        padding: "15px 40px",
-      }}
-    >
-      <h2>Cloud9</h2>
+    <header className="navbar">
+      <div className="logo">
+        <Link to="/">Cloud9</Link>
+      </div>
 
-      <div style={{ display: "flex", gap: "25px" }}>
-        <Link style={{ color: "white", textDecoration: "none" }} to="/">
-          Home
-        </Link>
+      <nav>
+        <ul className="nav-links">
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/products">Products</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </nav>
 
-        <Link style={{ color: "white", textDecoration: "none" }} to="/products">
-          Products
-        </Link>
+      <div className="nav-right">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="search-box"
+        />
 
-        <Link style={{ color: "white", textDecoration: "none" }} to="/about">
-          About
-        </Link>
-
-        <Link style={{ color: "white", textDecoration: "none" }} to="/contact">
-          Contact
-        </Link>
-
-        <Link style={{ color: "white", textDecoration: "none" }} to="/login">
+        <Link to="/login" className="login-btn">
           Login
         </Link>
 
-        <Link
-          style={{
-            background: "#6366f1",
-            padding: "8px 15px",
-            borderRadius: "6px",
-            color: "white",
-            textDecoration: "none",
-          }}
-          to="/register"
-        >
+        <Link to="/register" className="register-btn">
           Register
         </Link>
+
+        <Link to="/cart" className="cart-btn">
+          Cart (0)
+        </Link>
       </div>
-    </nav>
+    </header>
   );
 };
 

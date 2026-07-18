@@ -1,35 +1,27 @@
-const ProductCard = ({ name, price }) => {
+import { useNavigate } from "react-router-dom";
+
+const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
+  const handleAddToCart = () => {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push(product);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    navigate("/cart");
+  };
+
   return (
-    <div
-      style={{
-        width: "250px",
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        padding: "20px",
-        textAlign: "center",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-      }}
-    >
-      <img
-        src="https://via.placeholder.com/200"
-        alt={name}
-        style={{ width: "100%", borderRadius: "10px" }}
-      />
+    <div className="card">
+      <img src={product.image} alt={product.name} />
 
-      <h3>{name}</h3>
+      <h3>{product.name}</h3>
 
-      <h4 style={{ color: "#4f46e5" }}>₹{price}</h4>
+      <h2>₹{product.price}</h2>
 
-      <button
-        style={{
-          background: "#4f46e5",
-          color: "white",
-          border: "none",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
+      <button onClick={handleAddToCart}>
         Add to Cart
       </button>
     </div>

@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admin" element={<AdminDashboard />} />
-      </Routes>
+      </Routes>x1
     </MainLayout>
   );
 };
