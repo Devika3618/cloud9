@@ -1,13 +1,14 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const cors = require("cors");
-const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const paymentRoutes = require("./routes/paymentRoutes");
 const userRoutes = require("./routes/userRoutes");
+const productRoutes = require("./routes/productRoutes");
 const protect = require("./middleware/authMiddleware");
 
-
-dotenv.config();
 connectDB();
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/users", userRoutes);
-
+app.use("/api/products", productRoutes);
 app.get("/api/profile", protect, (req, res) => {
     res.json({
         message: "Welcome! This is a protected route.",
