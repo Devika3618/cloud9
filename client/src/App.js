@@ -1,58 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Sidebar from "./components/Sidebar";
-import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProductListing from "./pages/ProductListing";
+import ProductDetails from "./pages/ProductDetails";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import Profile from "./pages/Profile";
+import AdminDashboard from "./pages/AdminDashboard";
 
-import Dashboard from "./pages/Dashboard";
-import ManageUsers from "./pages/ManageUsers";
-import ManageProducts from "./pages/ManageProducts";
-import ManageOrders from "./pages/ManageOrders";
+import MainLayout from "./layouts/MainLayout";
 
-import "./App.css";
-
-function App() {
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
+const App = () => {
   return (
-    <Router>
-
-      <div className="app">
-
-        <Sidebar
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-        />
-
-        <div className="main">
-
-          <Navbar
-            setSidebarOpen={setSidebarOpen}
-          />
-
-          <div className="content">
-
-            <Routes>
-
-              <Route path="/" element={<Dashboard />} />
-
-              <Route path="/users" element={<ManageUsers />} />
-
-              <Route path="/products" element={<ManageProducts />} />
-
-              <Route path="/orders" element={<ManageOrders />} />
-
-            </Routes>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </Router>
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/products" element={<ProductListing />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Routes>
+    </MainLayout>
   );
-}
+};
 
 export default App;
